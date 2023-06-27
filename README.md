@@ -7,4 +7,4 @@
 
 ## Author
 + **BySwiizen** (Maintainer)
-+ **datatags** [datatags](https://github.com/) (Creator)
++ **[datatags](https://github.com/)** (Creator)
