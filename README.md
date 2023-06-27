@@ -1,7 +1,10 @@
 # ConstantHunger
+**ConstantHunger** is a Minecraft which keeps hunger constant at all times.
 
-# Now maintained by BySwiizen: https://github.com/BySwiizen/ConstantHunger
+## Useful links
++ [Issues](https://github.com/BySwiizer/ConstantHunger/issues)
++ [Wiki](https://github.com/BySwiizer/ConstantHunger/wiki)
 
-Holds player hunger at a constant value at all times.
-
-You can change the food level in the `config.yml`.
+## Author
++ **BySwiizen** (Maintainer)
++ **datatags** [datatags](https://github.com/) (Creator)
