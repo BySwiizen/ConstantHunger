@@ -1,6 +1,5 @@
 package me.datatags.constanthunger;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -9,8 +8,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+
 public class ConstantHunger extends JavaPlugin implements Listener {
     private int food;
+
+
     @Override
     public void onEnable() {
         saveDefaultConfig();
