@@ -2,4 +2,4 @@ name: ConstantHunger
 main: me.datatags.constanthunger.ConstantHunger
 
 version: ${project.version}
-api-version: 1.13
+api-version: '1.20'
