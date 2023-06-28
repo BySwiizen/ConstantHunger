@@ -1,20 +1,20 @@
 name: Bug Report
 title: "[BUG] "
-description: Report a bug you've encountered in <plugin name>.
+description: Report a bug you've encountered in ConstantHunger.
 
 body:
   - type: markdown
     attributes:
       value: |
         ## Guidelines
-        Please make sure you are running the latest version of Skript on a supported server platform and version.
+        Please make sure you are running the latest version of ConstantHunger on a supported server platform and version.
         Try to make sure there are no issues of this same problem currently open either.
   - type: textarea
     attributes:
-      label: <plugin name>/Server Version
+      label: ConstantHunger/Server Version
       description: |
         Run '/ver' to see the server version.
-        Run '/ver <plugin name>' to see the <plugin name> version.
+        Run '/ver ConstantHunger' to see the ConstantHunger version.
       render: markdown
     validations:
       required: true
