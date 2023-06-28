@@ -44,6 +44,8 @@ public class ConstantHunger extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onRespawn(PlayerRespawnEvent event) {
-        getServer().getScheduler().runTaskLater(this, () -> event.getPlayer().setFoodLevel(food), 1);
+        getServer().getScheduler().runTaskLater(this, () -> {
+            event.getPlayer().setFoodLevel(food);
+        }, 1);
     }
 }
