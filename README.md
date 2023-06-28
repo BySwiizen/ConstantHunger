@@ -2,9 +2,9 @@
 **ConstantHunger** is a Minecraft which keeps hunger constant at all times.
 
 ## Useful links
-+ [Issues](https://github.com/BySwiizer/ConstantHunger/issues)
-+ [Wiki](https://github.com/BySwiizer/ConstantHunger/wiki)
++ [Issues](https://github.com/BySwiizen/ConstantHunger/issues)
++ [Wiki](https://github.com/BySwiizen/ConstantHunger/wiki)
 
 ## Author
 + **BySwiizen** (Maintainer)
-+ **[datatags](https://github.com/)** (Creator)
++ **[datatags](https://github.com/datatags)** (Creator)
