@@ -4,6 +4,7 @@
     <name>ConstantHunger</name>
     <groupId>me.datatags.constanthunger</groupId>
     <artifactId>ConstantHunger</artifactId>
+    <packaging>jar</packaging>
 
     <version>2.1</version>
 
