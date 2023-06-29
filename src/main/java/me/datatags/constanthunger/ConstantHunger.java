@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 
 public class ConstantHunger extends JavaPlugin implements Listener {
+
     private int food;
 
 
