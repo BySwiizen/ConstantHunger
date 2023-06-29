@@ -5,6 +5,7 @@
     <groupId>me.datatags.constanthunger</groupId>
     <artifactId>ConstantHunger</artifactId>
     <packaging>jar</packaging>
+    <description>Plugin that keeps hunger constant at all times</description>
 
     <version>2.1</version>
 

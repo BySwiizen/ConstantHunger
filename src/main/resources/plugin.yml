@@ -1,5 +1,6 @@
 name: ConstantHunger
 main: me.datatags.constanthunger.ConstantHunger
+description: ${project.description}
 
 version: ${project.version}
 api-version: '1.20'
