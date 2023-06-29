@@ -3,3 +3,7 @@ main: me.datatags.constanthunger.ConstantHunger
 
 version: ${project.version}
 api-version: '1.20'
+
+authors:
+  - BySwiizen
+  - datatags
