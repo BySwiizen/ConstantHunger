@@ -12,16 +12,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class ConstantHunger extends JavaPlugin implements Listener {
 
-    private int food;
+    private static ConstantHunger INSTANCE;
 
 
     @Override
     public void onEnable() {
         int pluginId = 18933;
         Metrics metrics = new Metrics(this, pluginId);
+        INSTANCE = this;
         getConfig().options().copyDefaults(true);
         saveConfig();
-        food = getConfig().getInt("food", 19);
         getServer().getPluginManager().registerEvents(this, this);
         getLogger().info("-----------------------");
         getLogger().info(getName() + " v" + getDescription().getVersion());
@@ -39,18 +39,22 @@ public class ConstantHunger extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        event.getPlayer().setFoodLevel(food);
+        event.getPlayer().setFoodLevel(ConstantHunger.getInstance().getConfig().getInt("food"));
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onFoodChange(FoodLevelChangeEvent event) {
-        event.setFoodLevel(food);
+        event.setFoodLevel(ConstantHunger.getInstance().getConfig().getInt("food"));
     }
 
     @EventHandler
     public void onRespawn(PlayerRespawnEvent event) {
         getServer().getScheduler().runTaskLater(this, () -> {
-            event.getPlayer().setFoodLevel(food);
+            event.getPlayer().setFoodLevel(ConstantHunger.getInstance().getConfig().getInt("food"));
         }, 1);
+    }
+
+    public static ConstantHunger getInstance() {
+        return INSTANCE;
     }
 }
