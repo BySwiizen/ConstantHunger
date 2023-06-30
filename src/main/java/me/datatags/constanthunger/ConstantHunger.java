@@ -19,7 +19,8 @@ public class ConstantHunger extends JavaPlugin implements Listener {
     public void onEnable() {
         int pluginId = 18933;
         Metrics metrics = new Metrics(this, pluginId);
-        saveDefaultConfig();
+        getConfig().options().copyDefaults(true);
+        saveConfig();
         food = getConfig().getInt("food", 19);
         getServer().getPluginManager().registerEvents(this, this);
         getLogger().info("-----------------------");
