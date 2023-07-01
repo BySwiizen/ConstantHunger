@@ -8,6 +8,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import java.io.File;
 
 
 public class ConstantHunger extends JavaPlugin implements Listener {
@@ -20,8 +21,7 @@ public class ConstantHunger extends JavaPlugin implements Listener {
         int pluginId = 18933;
         Metrics metrics = new Metrics(this, pluginId);
         INSTANCE = this;
-        getConfig().options().copyDefaults(true);
-        saveConfig();
+        registerConfig();
         getServer().getPluginManager().registerEvents(this, this);
         getLogger().info("-----------------------");
         getLogger().info(this.getName() + " v" + this.getDescription().getVersion());
@@ -35,6 +35,14 @@ public class ConstantHunger extends JavaPlugin implements Listener {
         getLogger().info(this.getName() + " v" + this.getDescription().getVersion());
         getLogger().info("The plugin is disabled.");
         getLogger().info("------------------------");
+    }
+
+    private void registerConfig() {
+        File config = new File(ConstantHunger.getInstance().getDataFolder(), "config.yml");
+        if (!config.exists()) {
+            ConstantHunger.getInstance().getConfig().options().copyDefaults(true);
+            ConstantHunger.getInstance().saveConfig();
+        }
     }
 
     @EventHandler
