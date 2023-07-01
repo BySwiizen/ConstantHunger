@@ -24,7 +24,7 @@ public class ConstantHunger extends JavaPlugin implements Listener {
         saveConfig();
         getServer().getPluginManager().registerEvents(this, this);
         getLogger().info("-----------------------");
-        getLogger().info(getName() + " v" + getDescription().getVersion());
+        getLogger().info(this.getName() + " v" + this.getDescription().getVersion());
         getLogger().info("The plugin is enabled.");
         getLogger().info("-----------------------");
     }
@@ -32,7 +32,7 @@ public class ConstantHunger extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         getLogger().info("------------------------");
-        getLogger().info(getName() + " v" + getDescription().getVersion());
+        getLogger().info(this.getName() + " v" + this.getDescription().getVersion());
         getLogger().info("The plugin is disabled.");
         getLogger().info("------------------------");
     }
