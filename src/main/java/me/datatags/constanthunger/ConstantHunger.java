@@ -4,8 +4,8 @@ import me.datatags.constanthunger.events.changeFoodListener;
 import me.datatags.constanthunger.events.joinListener;
 import me.datatags.constanthunger.events.respawnListener;
 import org.bstats.bukkit.Metrics;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 
@@ -38,9 +38,10 @@ public class ConstantHunger extends JavaPlugin implements Listener {
     }
 
     private void registerEvents() {
-        getServer().getPluginManager().registerEvents(new changeFoodListener(), this);
-        getServer().getPluginManager().registerEvents(new joinListener(), this);
-        getServer().getPluginManager().registerEvents(new respawnListener(), this);
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(new changeFoodListener(), this);
+        pm.registerEvents(new joinListener(), this);
+        pm.registerEvents(new respawnListener(), this);
     }
 
     private void registerConfig() {
