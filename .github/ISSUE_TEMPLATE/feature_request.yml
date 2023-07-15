@@ -1,5 +1,5 @@
-name: Suggestion
-title: "[SUGGESTION] "
+name: Feature Request
+title: "[FEATURE] "
 description: Suggest a new feature for ConstantHunger.
 
 body:
@@ -7,12 +7,12 @@ body:
     attributes:
       value: |
         ## Guidelines
-        Please make sure that your suggestion isn't something already in ConstantHunger, and that it hasn't been suggested before.
+        Please make sure that your feature isn't something already in ConstantHunger, and that it hasn't been suggested before.
   - type: textarea
     attributes:
       label: Suggestion
       description: |
-        Enter your suggestion here. Try to be as thorough as possible.
+        Enter your feature here. Try to be as thorough as possible.
         If you are suggesting something such as an event, please try to leave a link to the Javadoc.
     validations:
       required: true
@@ -31,7 +31,7 @@ body:
   - type: checkboxes
     attributes:
       label: Agreement
-      description: Please agree to the following before submitting your suggestion.
+      description: Please agree to the following before submitting your feature.
       options:
-        - label: I have read the guidelines above and affirm I am following them with this suggestion.
+        - label: I have read the guidelines above and affirm I am following them with this feature.
           required: true
