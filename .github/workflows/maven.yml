@@ -1,10 +1,6 @@
 name: Build Maven
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -13,6 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -20,5 +17,5 @@ jobs:
         distribution: temurin
         cache: maven
 
-    - name: Build with Maven
+    - name: Build Project
       run: mvn -B package --file pom.xml

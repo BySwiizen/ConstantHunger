@@ -4,13 +4,12 @@ import me.datatags.constanthunger.events.changeFoodListener;
 import me.datatags.constanthunger.events.joinListener;
 import me.datatags.constanthunger.events.respawnListener;
 import org.bstats.bukkit.Metrics;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 
 
-public class ConstantHunger extends JavaPlugin implements Listener {
+public class ConstantHunger extends JavaPlugin {
 
     private static ConstantHunger INSTANCE;
 
@@ -22,7 +21,6 @@ public class ConstantHunger extends JavaPlugin implements Listener {
         INSTANCE = this;
         registerEvents();
         registerConfig();
-        getServer().getPluginManager().registerEvents(this, this);
         getLogger().info("-----------------------");
         getLogger().info(this.getName() + " v" + this.getDescription().getVersion());
         getLogger().info("The plugin is enabled.");
