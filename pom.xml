@@ -66,10 +66,10 @@
             <id>sonatype</id>
             <url>https://repository.sonatype.org/content/groups/public/</url>
         </repository>
-        <!-- PaperMC -->
+        <!-- SpigotMC -->
         <repository>
-            <id>papermc</id>
-            <url>https://repo.papermc.io/repository/maven-public/</url>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 
@@ -87,10 +87,10 @@
             <version>3.0.2</version>
             <scope>compile</scope>
         </dependency>
-        <!-- https://github.com/PaperMC/Paper -->
+        <!-- https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot/commits -->
         <dependency>
-            <groupId>io.papermc.paper</groupId>
-            <artifactId>paper-api</artifactId>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
             <version>1.20.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
