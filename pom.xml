@@ -45,7 +45,6 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>me.datatags.constanthunger</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
