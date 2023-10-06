@@ -3,7 +3,6 @@ package me.datatags.constanthunger;
 import me.datatags.constanthunger.events.changeFoodListener;
 import me.datatags.constanthunger.events.joinListener;
 import me.datatags.constanthunger.events.respawnListener;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
@@ -16,8 +15,6 @@ public class ConstantHunger extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        int pluginId = 18933;
-        Metrics metrics = new Metrics(this, pluginId);
         INSTANCE = this;
         registerEvents();
         registerConfig();
