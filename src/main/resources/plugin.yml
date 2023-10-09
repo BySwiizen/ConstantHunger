@@ -5,6 +5,4 @@ description: ${project.description}
 version: ${project.version}
 api-version: '1.13'
 
-authors:
-  - BySwiizen
-  - datatags
+authors: [BySwiizen, datatags]
