@@ -1,3 +1,6 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+
 plugins {
     id 'java-library'
     // https://github.com/johnrengelman/shadow
@@ -12,6 +15,7 @@ compileJava {
     targetCompatibility = '17'
     options.encoding = 'UTF-8'
 }
+
 
 repositories {
     mavenCentral()
@@ -29,10 +33,11 @@ dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.20.2-R0.1-SNAPSHOT'
 }
 
+
 processResources {
     inputs.property("version", project.version)
 
-    filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [
-            'version' : project.version,
+    filter ReplaceTokens, tokens: [
+            'VERSION' : project.version,
     ]
 }
