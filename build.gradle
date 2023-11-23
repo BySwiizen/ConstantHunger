@@ -7,7 +7,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
-group 'me.datatags'
+group 'me.datatags.constanthunger'
 version '4.0'
 
 compileJava {
