@@ -27,3 +27,12 @@ gradle-app.setting
 .gradletasknamecache
 !gradle-wrapper.jar
 !gradle-wrapper.properties
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
