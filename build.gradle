@@ -21,7 +21,7 @@ repositories {
     mavenCentral()
 
     // Sonatype
-    maven { url = 'https://repository.sonatype.org/content/groups/public/' }
+    maven { url = 'https://oss.sonatype.org/content/groups/public/' }
     // SpigotMC
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
 }
