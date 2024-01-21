@@ -38,6 +38,6 @@ jobs:
 
       # https://github.com/actions/upload-artifact
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4.0.0
+        uses: actions/upload-artifact@v4.2.0
         with:
           path: build/libs/ConstantHunger-*.jar
