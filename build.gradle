@@ -2,7 +2,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 
 plugins {
-    id 'java-library'
+    id 'java'
     // https://github.com/johnrengelman/shadow
     id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
@@ -44,6 +44,7 @@ shadowJar {
 build {
     dependsOn(shadowJar)
 }
+
 
 processResources {
     inputs.property("version", project.version)
