@@ -35,6 +35,16 @@ dependencies {
     implementation 'org.bstats:bstats-bukkit:3.0.2'
 }
 
+
+shadowJar {
+    archiveClassifier = null
+    relocate 'org.bstats', 'me.datatags.constanthunger.metrics'
+}
+
+build {
+    dependsOn(shadowJar)
+}
+
 processResources {
     inputs.property("version", project.version)
 
