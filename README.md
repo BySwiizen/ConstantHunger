@@ -1,5 +1,5 @@
 # ConstantHunger
-**ConstantHunger** is a Minecraft plugins which keeps hunger constant at all times.
+**ConstantHunger** is a Minecraft plugin which keeps hunger constant at all times.
 
 ## Useful links
 + [Issues](https://github.com/BySwiizen/ConstantHunger/issues)
