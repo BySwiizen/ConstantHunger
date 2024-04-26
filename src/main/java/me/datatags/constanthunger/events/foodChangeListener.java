@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 
-public class changeFoodListener implements Listener {
+public class foodChangeListener implements Listener {
 
 
     @EventHandler(priority = EventPriority.HIGHEST)
