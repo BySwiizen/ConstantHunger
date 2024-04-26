@@ -11,8 +11,8 @@ group 'me.datatags.constanthunger'
 version '4.4'
 
 compileJava {
-    sourceCompatibility = '17'
-    targetCompatibility = '17'
+    sourceCompatibility = '21'
+    targetCompatibility = '21'
     options.encoding = 'UTF-8'
 }
 
