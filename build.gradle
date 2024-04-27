@@ -3,7 +3,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
     id 'java'
-    // https://github.com/johnrengelman/shadow
+    // https://github.com/Goooler/shadow
     id 'io.github.goooler.shadow' version '8.1.7'
 }
 
