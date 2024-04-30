@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'me.datatags.constanthunger'
-version '5.0'
+version '5.1'
 
 compileJava {
     sourceCompatibility = '21'
