@@ -9,11 +9,17 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 
 public class respawnListener implements Listener {
 
+    public ConstantHunger plugin;
+
+    public respawnListener(ConstantHunger instance) {
+        this.plugin = instance;
+    }
+
 
     @EventHandler
     public void onRespawn(PlayerRespawnEvent event) {
-        Bukkit.getServer().getScheduler().runTaskLater(ConstantHunger.getInstance(), () -> {
-            event.getPlayer().setFoodLevel(ConstantHunger.getInstance().getConfig().getInt("food"));
+        Bukkit.getServer().getScheduler().runTaskLater(plugin, () -> {
+            event.getPlayer().setFoodLevel(plugin.getConfigfile().getInt("food"));
         }, 1);
     }
 }

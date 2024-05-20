@@ -1,5 +1,6 @@
 package me.datatags.constanthunger;
 
+import dev.dejvokep.boostedyaml.YamlDocument;
 import me.datatags.constanthunger.events.foodChangeListener;
 import me.datatags.constanthunger.events.joinListener;
 import me.datatags.constanthunger.events.respawnListener;
@@ -7,20 +8,19 @@ import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
+import java.io.IOException;
 
 
 public class ConstantHunger extends JavaPlugin {
 
-    private static ConstantHunger INSTANCE;
+    private YamlDocument configfile;
 
 
     @Override
     public void onEnable() {
-        INSTANCE = this;
+        files();
         Metrics metrics = new Metrics(this, 20832);
-        registerEvents();
-        registerConfig();
-        getLogger().info("-----------------------");
+        registerEvents();getLogger().info("-----------------------");
         getLogger().info(this.getName() + " v" + this.getDescription().getVersion());
         getLogger().info("The plugin is enabled.");
         getLogger().info("-----------------------");
@@ -36,20 +36,24 @@ public class ConstantHunger extends JavaPlugin {
 
     private void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
-        pm.registerEvents(new foodChangeListener(), this);
-        pm.registerEvents(new joinListener(), this);
-        pm.registerEvents(new respawnListener(), this);
+        pm.registerEvents(new foodChangeListener(this), this);
+        pm.registerEvents(new joinListener(this), this);
+        pm.registerEvents(new respawnListener(this), this);
     }
 
-    private void registerConfig() {
-        File config = new File(ConstantHunger.getInstance().getDataFolder(), "config.yml");
-        if (!config.exists()) {
-            ConstantHunger.getInstance().getConfig().options().copyDefaults(true);
-            ConstantHunger.getInstance().saveConfig();
+    private void files() {
+        configfile = loadFile("config.yml");
+    }
+
+    private YamlDocument loadFile(String fileName) {
+        try {
+            return YamlDocument.create(new File(getDataFolder(), fileName), getResource(fileName));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public static ConstantHunger getInstance() {
-        return INSTANCE;
+    public YamlDocument getConfigfile() {
+        return configfile;
     }
 }

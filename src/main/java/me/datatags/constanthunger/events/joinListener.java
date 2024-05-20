@@ -8,9 +8,15 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class joinListener implements Listener {
 
+    public ConstantHunger plugin;
+
+    public joinListener(ConstantHunger instance) {
+        this.plugin = instance;
+    }
+
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        event.getPlayer().setFoodLevel(ConstantHunger.getInstance().getConfig().getInt("food"));
+        event.getPlayer().setFoodLevel(plugin.getConfigfile().getInt("food"));
     }
 }
