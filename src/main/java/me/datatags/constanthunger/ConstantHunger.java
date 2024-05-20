@@ -18,9 +18,10 @@ public class ConstantHunger extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        files();
         Metrics metrics = new Metrics(this, 20832);
-        registerEvents();getLogger().info("-----------------------");
+        registerEvents();
+        files();
+        getLogger().info("-----------------------");
         getLogger().info(this.getName() + " v" + this.getDescription().getVersion());
         getLogger().info("The plugin is enabled.");
         getLogger().info("-----------------------");
