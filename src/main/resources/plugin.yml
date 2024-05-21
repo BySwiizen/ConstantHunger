@@ -1,8 +1,0 @@
-name: ConstantHunger
-main: me.datatags.constanthunger.ConstantHunger
-description: Plugin that keeps hunger constant at all times
-
-version: @VERSION@
-api-version: '1.13'
-
-authors: [BySwiizen, datatags]
