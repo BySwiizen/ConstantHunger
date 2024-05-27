@@ -1,0 +1,39 @@
+name: TestMC
+
+
+on:
+  push:
+  pull_request:
+
+
+jobs:
+  test:
+
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        mc-version: ['1.13.2', '1.14.4', '1.15.2', '1.16.5', '1.17.1', '1.18.2', '1.19.4', '1.20', '1.20.1', '1.20.2', '1.20.3', '1.20.4', '1.20.5', '1.20.6']
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Check out Git repository
+        uses: actions/checkout@v4.1.6
+
+      # https://github.com/actions/setup-java
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4.2.1
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          java-package: jdk
+          architecture: x64
+          cache: gradle
+
+      # https://github.com/gmitch215/TestMC
+      - uses: gmitch215/TestMC@v1.0.4
+        with:
+          runtime: 'spigot'
+          version: ${{ matrix.mc-version }}
+          time: 120
+          path: 'build/libs/ConstantHunger-*.jar'
