@@ -44,6 +44,7 @@ shadowJar {
     archiveFileName = project.name + "-" + project.version + ".jar"
     relocate 'dev.dejvokep.boostedyaml', 'me.datatags.constanthunger.boostedyaml'
     relocate 'org.bstats', 'me.datatags.constanthunger.metrics'
+    exclude 'META-INF/**', 'LICENSE'
 }
 
 build {
