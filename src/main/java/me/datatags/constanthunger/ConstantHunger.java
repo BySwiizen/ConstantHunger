@@ -18,9 +18,9 @@ public class ConstantHunger extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Metrics metrics = new Metrics(this, 20832);
+        registerMetrics();
         registerEvents();
-        files();
+        registerFiles();
         getLogger().info("-----------------------");
         getLogger().info(this.getName() + " v" + this.getDescription().getVersion());
         getLogger().info("The plugin is enabled.");
@@ -34,23 +34,27 @@ public class ConstantHunger extends JavaPlugin {
         getLogger().info("The plugin is disabled.");
         getLogger().info("------------------------");
     }
+	
+	private void registerMetrics() {
+		Metrics metrics = new Metrics(this, 20832);
+	}
 
     private void registerEvents() {
-        PluginManager pm = getServer().getPluginManager();
-        pm.registerEvents(new foodChangeListener(this), this);
-        pm.registerEvents(new joinListener(this), this);
-        pm.registerEvents(new respawnListener(this), this);
+        PluginManager pluginmanager = getServer().getPluginManager();
+        pluginmanager.registerEvents(new foodChangeListener(this), this);
+        pluginmanager.registerEvents(new joinListener(this), this);
+        pluginmanager.registerEvents(new respawnListener(this), this);
     }
 
-    private void files() {
+    private void registerFiles() {
         configfile = loadFile("config.yml");
     }
 
     private YamlDocument loadFile(String fileName) {
         try {
             return YamlDocument.create(new File(getDataFolder(), fileName), getResource(fileName));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (IOException error) {
+            throw new RuntimeException(error);
         }
     }
 
