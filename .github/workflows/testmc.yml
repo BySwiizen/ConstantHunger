@@ -45,6 +45,6 @@ jobs:
       - uses: gmitch215/TestMC@v2.0.1
         with:
           runtime: 'spigot'
-          version: '1.21'
+          version: '1.21.1'
           time: 120
           path: 'build/libs/ConstantHunger-*.jar'
