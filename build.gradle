@@ -7,6 +7,7 @@ plugins {
     id 'com.gradleup.shadow' version '9.2.2'
     // https://github.com/Minecrell/plugin-yml
     id 'net.minecrell.plugin-yml.bukkit' version '0.6.0'
+    id 'maven-publish'
 }
 
 group 'me.datatags.constanthunger'
@@ -49,6 +50,17 @@ shadowJar {
 
 build {
     dependsOn(shadowJar)
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.group
+            artifactId project.name
+            version project.version
+            artifact shadowJar
+        }
+    }
 }
 
 
