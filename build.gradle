@@ -24,8 +24,6 @@ repositories {
     maven { url = 'https://jitpack.io' }
     // SpigotMC
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots' }
-    // FoliaLib
-    maven { url = 'https://repo.tcoded.com/releases' }
 }
 
 dependencies {
