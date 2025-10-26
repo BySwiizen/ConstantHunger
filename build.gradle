@@ -1,17 +1,11 @@
-import org.apache.tools.ant.filters.ReplaceTokens
-
-
 plugins {
     id 'java'
     // https://github.com/GradleUp/shadow
     id 'com.gradleup.shadow' version '9.2.2'
-    // https://github.com/Minecrell/plugin-yml
-    id 'net.minecrell.plugin-yml.bukkit' version '0.6.0'
+    // https://github.com/JetBrains/gradle-idea-ext-plugin
+    id 'org.jetbrains.gradle.plugin.idea-ext' version '1.3'
     id 'maven-publish'
 }
-
-group 'me.datatags.constanthunger'
-version '6.4.0'
 
 compileJava {
     sourceCompatibility = '21'
@@ -21,31 +15,52 @@ compileJava {
 
 
 repositories {
+    mavenLocal()
     mavenCentral()
 
     // Sonatype
-    maven { url = 'https://oss.sonatype.org/content/groups/public/' }
+    maven { url = 'https://oss.sonatype.org/content/groups/public' }
+    // JitPack
+    maven { url = 'https://jitpack.io' }
     // SpigotMC
-    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots' }
+    // FoliaLib
+    maven { url = 'https://repo.tcoded.com/releases' }
 }
 
 dependencies {
     // https://mvnrepository.com/artifact/org.jetbrains/annotations
-    implementation 'org.jetbrains:annotations:26.0.2-1'
+    compileOnly 'org.jetbrains:annotations:26.0.2-1'
+    // https://github.com/google/gson
+    implementation 'com.google.code.gson:gson:2.13.2'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation 'org.apache.commons:commons-lang3:3.19.0'
+    // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot
+    compileOnly 'org.spigotmc:spigot-api:1.21.9-R0.1-SNAPSHOT'
     // https://github.com/dejvokep/boosted-yaml
     implementation 'dev.dejvokep:boosted-yaml:1.3.7'
+    // https://github.com/KyoriPowered/adventure
+    implementation 'net.kyori:adventure-api:4.24.0'
+    implementation 'net.kyori:adventure-text-minimessage:4.24.0'
+    implementation 'net.kyori:adventure-text-serializer-legacy:4.24.0'
+    // https://github.com/KyoriPowered/adventure-platform
+    implementation 'net.kyori:adventure-platform-bukkit:4.4.1'
+    // https://github.com/Revxrsal/Lamp
+   implementation 'io.github.Revxrsal.Lamp:common:3.3.6'
+   implementation 'io.github.Revxrsal.Lamp:bukkit:3.3.6'
     // https://github.com/Bastian/bstats-metrics
     implementation 'org.bstats:bstats-bukkit:3.1.0'
-    // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot/browse
-    compileOnly 'org.spigotmc:spigot-api:1.21.9-R0.1-SNAPSHOT'
 }
 
 
 shadowJar {
-    archiveFileName = project.name + "-" + project.version + ".jar"
-    relocate 'dev.dejvokep.boostedyaml', 'me.datatags.constanthunger.boostedyaml'
-    relocate 'org.bstats', 'me.datatags.constanthunger.metrics'
     exclude 'META-INF/**', 'LICENSE'
+    relocate 'org.jetbrains.annotations', 'me.datatags.constanthunger.libs.annotations'
+    relocate 'com.google.gson', 'me.datatags.constanthunger.libs.gson'
+    relocate 'org.apache.commons', 'me.datatags.constanthunger.libs.commonslang3.'
+    relocate 'dev.dejvokep.boostedyaml', 'me.datatags.constanthunger.libs.boostedyaml'
+    relocate 'org.bstats', 'me.datatags.constanthunger.libs.metrics'
+    archiveFileName = project.name + "-" + project.version + ".jar"
 }
 
 build {
@@ -55,7 +70,7 @@ build {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId project.group
+            groupId project.groupid
             artifactId project.name
             version project.version
             artifact shadowJar
@@ -64,15 +79,16 @@ publishing {
 }
 
 
-bukkit {
-    name = 'ConstantHunger'
-    main = 'me.datatags.constanthunger.ConstantHunger'
-    description = 'Plugin that keeps hunger constant at all times'
-    version = '@VERSION@'
-    apiVersion = '1.13'
-    authors = ['datatags', 'BySwiizen']
-}
-
 processResources {
-    filter ReplaceTokens, tokens: ["VERSION" : project.version]
+    filesMatching("plugin.yml") {
+        expand(
+                name: project.property("name"),
+                groupid: project.property("groupid"),
+                artifactid: project.property("artifactid"),
+                description: project.property("description"),
+                author: project.property("author"),
+                version: project.property("version"),
+                apiversion: project.property("apiversion"),
+        )
+    }
 }

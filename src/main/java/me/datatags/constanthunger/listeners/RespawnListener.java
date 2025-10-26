@@ -1,4 +1,4 @@
-package me.datatags.constanthunger.events;
+package me.datatags.constanthunger.listeners;
 
 import me.datatags.constanthunger.ConstantHunger;
 import org.bukkit.Bukkit;
@@ -7,11 +7,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 
-public class respawnListener implements Listener {
+public class RespawnListener implements Listener {
 
     public ConstantHunger plugin;
-
-    public respawnListener(ConstantHunger instance) {
+    public RespawnListener(ConstantHunger instance) {
         this.plugin = instance;
     }
 
@@ -19,7 +18,7 @@ public class respawnListener implements Listener {
     @EventHandler
     public void onRespawn(PlayerRespawnEvent event) {
         Bukkit.getServer().getScheduler().runTaskLater(plugin, () -> {
-            event.getPlayer().setFoodLevel(plugin.getConfigfile().getInt("food"));
+            event.getPlayer().setFoodLevel(ConstantHunger.configfile.getInt("food"));
         }, 1);
     }
 }

@@ -1,26 +1,30 @@
 package me.datatags.constanthunger;
 
 import dev.dejvokep.boostedyaml.YamlDocument;
-import me.datatags.constanthunger.events.foodChangeListener;
-import me.datatags.constanthunger.events.joinListener;
-import me.datatags.constanthunger.events.respawnListener;
+import me.datatags.constanthunger.command.MainCommand;
+import me.datatags.constanthunger.command.subcommands.HelpSubCommand;
+import me.datatags.constanthunger.command.subcommands.ReloadSubCommand;
+import me.datatags.constanthunger.listeners.FoodChangeListener;
+import me.datatags.constanthunger.listeners.JoinListener;
+import me.datatags.constanthunger.listeners.RespawnListener;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import revxrsal.commands.bukkit.BukkitCommandHandler;
 import java.io.File;
 import java.io.IOException;
 
 
 public class ConstantHunger extends JavaPlugin {
 
-    private YamlDocument configfile;
-
+    public static YamlDocument configfile, messagesfile;
 
     @Override
     public void onEnable() {
-        registerMetrics();
-        registerEvents();
-        registerFiles();
+		registerMetrics();
+		registerFiles();
+		registerListener();
+		registerSubCommands();
         getLogger().info("-----------------------");
         getLogger().info(this.getName() + " v" + this.getDescription().getVersion());
         getLogger().info("The plugin is enabled.");
@@ -36,21 +40,15 @@ public class ConstantHunger extends JavaPlugin {
     }
 	
 	private void registerMetrics() {
-		Metrics metrics = new Metrics(this, 20832);
+		new Metrics(this, 20832);
 	}
 
-    private void registerEvents() {
-        PluginManager pluginmanager = getServer().getPluginManager();
-        pluginmanager.registerEvents(new foodChangeListener(this), this);
-        pluginmanager.registerEvents(new joinListener(this), this);
-        pluginmanager.registerEvents(new respawnListener(this), this);
-    }
-
-    private void registerFiles() {
+	private void registerFiles() {
         configfile = loadFile("config.yml");
+		messagesfile = loadFile("messages.yml");
     }
 
-    private YamlDocument loadFile(String fileName) {
+	private YamlDocument loadFile(String fileName) {
         try {
             return YamlDocument.create(new File(getDataFolder(), fileName), getResource(fileName));
         } catch (IOException error) {
@@ -58,7 +56,18 @@ public class ConstantHunger extends JavaPlugin {
         }
     }
 
-    public YamlDocument getConfigfile() {
-        return configfile;
+    private void registerListener() {
+        PluginManager pluginmanager = getServer().getPluginManager();
+        pluginmanager.registerEvents(new FoodChangeListener(this), this);
+        pluginmanager.registerEvents(new RespawnListener(this), this);
+		pluginmanager.registerEvents(new JoinListener(this), this);
     }
+
+	private void registerSubCommands() {
+		BukkitCommandHandler handler = BukkitCommandHandler.create(this);
+		handler.enableAdventure();
+		handler.register(new MainCommand(this));
+		handler.register(new HelpSubCommand(this));
+		handler.register(new ReloadSubCommand(this));
+	}
 }

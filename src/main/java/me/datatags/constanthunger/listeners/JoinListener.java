@@ -1,4 +1,4 @@
-package me.datatags.constanthunger.events;
+package me.datatags.constanthunger.listeners;
 
 import me.datatags.constanthunger.ConstantHunger;
 import org.bukkit.event.EventHandler;
@@ -6,17 +6,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 
-public class joinListener implements Listener {
+public class JoinListener implements Listener {
 
     public ConstantHunger plugin;
-
-    public joinListener(ConstantHunger instance) {
+    public JoinListener(ConstantHunger instance) {
         this.plugin = instance;
     }
 
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        event.getPlayer().setFoodLevel(plugin.getConfigfile().getInt("food"));
+        event.getPlayer().setFoodLevel(ConstantHunger.configfile.getInt("food"));
     }
 }

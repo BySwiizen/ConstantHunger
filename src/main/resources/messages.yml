@@ -1,0 +1,5 @@
+prefix: <gold>ConstantHunger <gray>»
+reload-success: <green>The configuration files have been reloaded.
+help:
+  - <yellow>/constanthunger reload <black>- <white>Reloads the plugin configuration files.
+  - <yellow>/constanthunger help <black>- <white>Displays the help command.

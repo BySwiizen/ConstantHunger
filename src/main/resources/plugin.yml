@@ -1,0 +1,20 @@
+name: ${name}
+main: ${groupid}.${artifactid}
+description: ${description}
+author: ${author}
+
+version: ${version}
+api-version: ${apiversion}
+
+
+load: POSTWORLD
+
+
+commands:
+  constanthunger:
+    description: Main command of ConstantHunger
+    usage: /<command> [help|reload]
+permissions:
+  constanthunger.reload:
+    description: Reload permission of ConstantHunger
+    default: op

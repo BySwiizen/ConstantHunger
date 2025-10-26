@@ -1,4 +1,4 @@
-name: Build Gradle
+name: Gradle
 
 
 on:
@@ -14,12 +14,8 @@ jobs:
 
     steps:
       # https://github.com/actions/checkout
-      - name: Check out Git repository
+      - name: Checkout Git repository
         uses: actions/checkout@v5.0.0
-
-      # https://github.com/gradle/wrapper-validation-action
-      - name: Wrapper validation
-        uses: gradle/actions/wrapper-validation@v5.0.0
 
       # https://github.com/actions/cache
       - name: Cache Gradle
@@ -29,22 +25,20 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          restore-keys: ${{ runner.os }}-gradle-
 
       # https://github.com/gradle/gradle-build-action
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5.0.0
 
       # https://github.com/actions/setup-java
-      - name: Set up JDK 21
+      - name: Setup JDK 21
         uses: actions/setup-java@v5.0.0
         with:
-          distribution: 'temurin'
-          java-version: '21'
+          distribution: temurin
+          java-version: 21
           java-package: jdk
           architecture: x64
-          cache: gradle
 
       - name: Configure Git
         run: git config --global user.name "Github Actions" && git config --global user.email "actions@github.com"
@@ -57,8 +51,8 @@ jobs:
         uses: nick-invision/retry@v3.0.2
         with:
           max_attempts: 2
-          timeout_minutes: 5
-          command: ./gradlew build shadowJar
+          timeout_minutes: 1
+          command: ./gradlew clean shadowJar
 
       # https://github.com/actions/upload-artifact
       - name: Upload build artifact
