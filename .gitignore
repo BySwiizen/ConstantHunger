@@ -13,20 +13,18 @@ $RECYCLE.BIN/
 .classpath
 .project
 .settings/
- 
-# Intellij
+
+# IntelliJ IDEA
 .idea/
 *.iml
 *.iws
- 
+
 # Gradle
 .gradle
 gradle-app.setting
 **/build/
-!src/**/build/
 .gradletasknamecache
 !gradle-wrapper.jar
-!gradle-wrapper.properties
 
 # Package files
 *.jar
