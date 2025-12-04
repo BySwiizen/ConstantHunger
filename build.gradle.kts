@@ -58,12 +58,11 @@ tasks {
 
     shadowJar {
         exclude("META-INF/**", "LICENSE")
-        relocate("org.jetbrains.annotations", "fr.byswiizen.templategradle.libs.annotations")
-        relocate("com.google.gson", "fr.byswiizen.templategradle.libs.gson")
-        relocate("org.apache.commons", "fr.byswiizen.templategradle.libs.commonslang3")
-        relocate("com.tcoded.folialib", "fr.byswiizen.templategradle.libs.folialib")
-        relocate("dev.dejvokep.boostedyaml", "fr.byswiizen.templategradle.libs.boostedyaml")
-        relocate("org.bstats", "fr.byswiizen.templategradle.libs.metrics")
+        relocate("org.jetbrains.annotations", "me.datatags.constanthunger.libs.annotations")
+        relocate("com.google.gson", "me.datatags.constanthunger.libs.gson")
+        relocate("org.apache.commons", "me.datatags.constanthunger.libs.commonslang3")
+        relocate("dev.dejvokep.boostedyaml", "me.datatags.constanthunger.libs.boostedyaml")
+        relocate("org.bstats", "me.datatags.constanthunger.libs.metrics")
         archiveFileName.set("${project.name}-${project.version}.jar")
     }
 
