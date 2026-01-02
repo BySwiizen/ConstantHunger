@@ -39,10 +39,6 @@ dependencies {
     implementation(libs.boostedyaml)
     // https://github.com/KyoriPowered/adventure
     implementation(libs.adventureapi)
-    implementation(libs.adventureminimessage)
-    implementation(libs.adventurelegacy)
-    // https://github.com/KyoriPowered/adventure-platform
-    implementation(libs.adventureplatform)
     // https://github.com/Revxrsal/Lamp
     implementation(libs.lampcommon)
     implementation(libs.lampbukkit)

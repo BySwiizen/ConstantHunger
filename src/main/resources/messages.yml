@@ -1,5 +1,5 @@
-prefix: <gold>ConstantHunger <gray>»
-reload-success: <green>The configuration files have been reloaded.
+prefix: '&6ConstantHunger &7»'
+reload-success: '&aThe configuration files have been reloaded.'
 help:
-  - <yellow>/constanthunger reload <black>- <white>Reloads the plugin configuration files.
-  - <yellow>/constanthunger help <black>- <white>Displays the help command.
+  - '&e/constanthunger reload &0- &fReloads the plugin configuration files.'
+  - '&e/constanthunger help &0- &fDisplays the help command.'
