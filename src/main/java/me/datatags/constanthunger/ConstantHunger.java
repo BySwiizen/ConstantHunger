@@ -8,6 +8,7 @@ import me.datatags.constanthunger.listeners.FoodChangeListener;
 import me.datatags.constanthunger.listeners.JoinListener;
 import me.datatags.constanthunger.listeners.RespawnListener;
 import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import revxrsal.commands.bukkit.BukkitCommandHandler;
@@ -24,7 +25,7 @@ public class ConstantHunger extends JavaPlugin {
     public void onEnable() {
 		registerMetrics();
 		registerFiles();
-		registerListener();
+		registerListeners();
 		registerCommand();
         getLogger().info("-----------------------");
         getLogger().info(getName() + " v" + getDescription().getVersion());
@@ -57,8 +58,8 @@ public class ConstantHunger extends JavaPlugin {
         }
     }
 
-    private void registerListener() {
-        PluginManager pluginmanager = getServer().getPluginManager();
+    private void registerListeners() {
+        PluginManager pluginmanager = Bukkit.getServer().getPluginManager();
         pluginmanager.registerEvents(new FoodChangeListener(this), this);
         pluginmanager.registerEvents(new RespawnListener(this), this);
 		pluginmanager.registerEvents(new JoinListener(this), this);
