@@ -10,7 +10,7 @@ on:
 jobs:
   add-reviews:
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
       # https://github.com/kentaro-m/auto-assign-action
