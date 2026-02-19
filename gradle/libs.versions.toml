@@ -1,6 +1,6 @@
 [versions]
 shadow = "9.3.1"
-gradleideaext = "1.4"
+gradleideaext = "1.4.1"
 annotations = "26.0.2-1"
 gson = "2.13.2"
 commonslang3 = "3.20.0"
