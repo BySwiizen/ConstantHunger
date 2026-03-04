@@ -1,5 +1,5 @@
 [versions]
-shadow = "9.3.1"
+shadow = "9.3.2"
 gradleideaext = "1.4.1"
 annotations = "26.1.0"
 gson = "2.13.2"
