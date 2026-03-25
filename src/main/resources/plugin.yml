@@ -8,6 +8,7 @@ api-version: ${apiversion}
 
 
 load: POSTWORLD
+folia-supported: true
 
 
 commands:

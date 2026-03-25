@@ -24,6 +24,8 @@ repositories {
     maven(url = "https://jitpack.io")
     // SpigotMC
     maven(url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots")
+    // FoliaLib
+    maven(url = "https://repo.tcoded.com/releases")
 }
 
 dependencies {
@@ -35,6 +37,8 @@ dependencies {
     implementation(libs.commonslang3)
     // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot
     compileOnly(libs.spigot)
+    // https://github.com/TechnicallyCoded/FoliaLib
+    implementation(libs.folia)
     // https://github.com/dejvokep/boosted-yaml
     implementation(libs.boostedyaml)
     // https://github.com/KyoriPowered/adventure
@@ -57,6 +61,7 @@ tasks {
         relocate("org.jetbrains.annotations", "me.datatags.constanthunger.libs.annotations")
         relocate("com.google.gson", "me.datatags.constanthunger.libs.gson")
         relocate("org.apache.commons", "me.datatags.constanthunger.libs.commonslang3")
+        relocate("com.tcoded.folialib", "me.datatags.constanthunger.libs.folialib")
         relocate("dev.dejvokep.boostedyaml", "me.datatags.constanthunger.libs.boostedyaml")
         relocate("org.bstats", "me.datatags.constanthunger.libs.metrics")
         archiveFileName.set("${project.name}-${project.version}.jar")
