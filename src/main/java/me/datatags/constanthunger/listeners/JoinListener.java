@@ -19,6 +19,6 @@ public class JoinListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
 		plugin.getFoliaLib().getScheduler().runAtEntityLater(event.getPlayer(), () -> {
 			event.getPlayer().setFoodLevel(ConstantHunger.configfile.getInt("food"));
-		}, 500L, TimeUnit.MILLISECONDS);
+		}, 300L, TimeUnit.MILLISECONDS);
     }
 }

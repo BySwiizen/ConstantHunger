@@ -22,6 +22,6 @@ public class FoodChangeListener implements Listener {
 		Player player = (Player) event.getEntity();
 		plugin.getFoliaLib().getScheduler().runAtEntityLater(player, () -> {
 			player.setFoodLevel(ConstantHunger.configfile.getInt("food"));
-		}, 500L, TimeUnit.MILLISECONDS);
+		}, 300L, TimeUnit.MILLISECONDS);
 	}
 }
