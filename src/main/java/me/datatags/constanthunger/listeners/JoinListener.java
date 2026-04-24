@@ -4,6 +4,7 @@ import me.datatags.constanthunger.ConstantHunger;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import java.util.concurrent.TimeUnit;
 
 
 public class JoinListener implements Listener {
@@ -16,6 +17,8 @@ public class JoinListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        event.getPlayer().setFoodLevel(ConstantHunger.configfile.getInt("food"));
+		plugin.getFoliaLib().getScheduler().runAtEntityLater(event.getPlayer(), () -> {
+			event.getPlayer().setFoodLevel(ConstantHunger.configfile.getInt("food"));
+		}, 300L, TimeUnit.MILLISECONDS);
     }
 }
