@@ -1,5 +1,6 @@
 package me.datatags.constanthunger;
 
+import com.tcoded.folialib.FoliaLib;
 import dev.dejvokep.boostedyaml.YamlDocument;
 import me.datatags.constanthunger.command.MainCommand;
 import me.datatags.constanthunger.command.subcommands.HelpSubCommand;
@@ -19,10 +20,12 @@ import java.io.IOException;
 public class ConstantHunger extends JavaPlugin {
 
     public static YamlDocument configfile, messagesfile;
+	private FoliaLib foliaLib;
 
 
     @Override
     public void onEnable() {
+		registerFolia();
 		registerMetrics();
 		registerFiles();
 		registerListeners();
@@ -35,13 +38,20 @@ public class ConstantHunger extends JavaPlugin {
 
     @Override
     public void onDisable() {
+		if (foliaLib != null) {
+			foliaLib.getScheduler().cancelAllTasks();
+		}
         getLogger().info("------------------------");
         getLogger().info(getName() + " v" + getDescription().getVersion());
         getLogger().info("The plugin is disabled.");
         getLogger().info("------------------------");
     }
 
-	private void registerMetrics() {
+	private void registerFolia() {
+		foliaLib = new FoliaLib(this);
+	}
+
+	public void registerMetrics() {
 		new Metrics(this, 20832);
 	}
 
@@ -70,5 +80,9 @@ public class ConstantHunger extends JavaPlugin {
 		handler.register(new MainCommand(this));
 		handler.register(new HelpSubCommand(this));
 		handler.register(new ReloadSubCommand(this));
+	}
+
+	public FoliaLib getFoliaLib() {
+		return foliaLib;
 	}
 }
