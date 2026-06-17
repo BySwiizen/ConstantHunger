@@ -30,7 +30,6 @@ public class ReloadSubCommand {
             ConstantHunger.messagesfile.reload();
 			sender.reply(ColorUtil.translate(ConstantHunger.messagesfile.getString("prefix") + " " + ConstantHunger.messagesfile.getString("reload-success")));
         } catch (Exception error) {
-			sender.reply(ColorUtil.translate("&4Error loading files."));
             error.printStackTrace();
         }
     }

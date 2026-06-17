@@ -7,7 +7,8 @@ import me.datatags.constanthunger.command.subcommands.HelpSubCommand;
 import me.datatags.constanthunger.command.subcommands.ReloadSubCommand;
 import me.datatags.constanthunger.listeners.FoodChangeListener;
 import me.datatags.constanthunger.listeners.JoinListener;
-import me.datatags.constanthunger.listeners.RespawnListener;
+import me.datatags.constanthunger.listeners.FoliaRespawnListener;
+import me.datatags.constanthunger.listeners.SpigotRespawnListener;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -21,6 +22,7 @@ public class ConstantHunger extends JavaPlugin {
 
     public static YamlDocument configfile, messagesfile;
 	private FoliaLib foliaLib;
+	private boolean isFolia;
 
 
     @Override
@@ -49,6 +51,16 @@ public class ConstantHunger extends JavaPlugin {
 
 	private void registerFolia() {
 		foliaLib = new FoliaLib(this);
+		isFolia = isFolia();
+	}
+	
+	private boolean isFolia() {
+		try {
+			Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
+			return true;
+		} catch (ClassNotFoundException ignored) {
+			return false;
+		}
 	}
 
 	public void registerMetrics() {
@@ -71,8 +83,12 @@ public class ConstantHunger extends JavaPlugin {
     private void registerListeners() {
         PluginManager pluginmanager = Bukkit.getServer().getPluginManager();
         pluginmanager.registerEvents(new FoodChangeListener(this), this);
-        pluginmanager.registerEvents(new RespawnListener(this), this);
 		pluginmanager.registerEvents(new JoinListener(this), this);
+		if (isFolia) {
+			pluginmanager.registerEvents(new FoliaRespawnListener(this), this);
+		} else {
+			pluginmanager.registerEvents(new SpigotRespawnListener(this), this);
+		}
     }
 
 	private void registerCommand() {

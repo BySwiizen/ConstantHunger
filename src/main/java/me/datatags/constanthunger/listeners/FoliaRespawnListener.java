@@ -8,10 +8,10 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import java.util.concurrent.TimeUnit;
 
 
-public class RespawnListener implements Listener {
+public class FoliaRespawnListener implements Listener {
 
 	public ConstantHunger plugin;
-	public RespawnListener(ConstantHunger instance) {
+	public FoliaRespawnListener(ConstantHunger instance) {
 		this.plugin = instance;
 	}
 
@@ -20,7 +20,7 @@ public class RespawnListener implements Listener {
 	public void onRespawn(InventoryCloseEvent event) {
 		HumanEntity human = event.getPlayer();
 		plugin.getFoliaLib().getScheduler().runAtEntityLater(human, () -> {
-			if (human.isDead() == false) {
+			if (!human.isDead()) {
 				human.setFoodLevel(ConstantHunger.configfile.getInt("food"));
 			}
 		}, 500L, TimeUnit.MILLISECONDS);
