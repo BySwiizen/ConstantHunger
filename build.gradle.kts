@@ -23,7 +23,7 @@ repositories {
     // JitPack
     maven(url = "https://jitpack.io")
     // SpigotMC
-    maven(url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots")
+    maven(url = "https://hub.spigotmc.org/nexus/content/groups/public")
     // FoliaLib
     maven(url = "https://repo.tcoded.com/releases")
 }
