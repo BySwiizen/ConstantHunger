@@ -13,7 +13,9 @@ import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import revxrsal.commands.bukkit.BukkitCommandHandler;
+import revxrsal.commands.Lamp;
+import revxrsal.commands.bukkit.BukkitLamp;
+import revxrsal.commands.bukkit.actor.BukkitCommandActor;
 import java.io.File;
 import java.io.IOException;
 
@@ -92,10 +94,10 @@ public class ConstantHunger extends JavaPlugin {
     }
 
 	private void registerCommand() {
-		BukkitCommandHandler handler = BukkitCommandHandler.create(this);
-		handler.register(new MainCommand(this));
-		handler.register(new HelpSubCommand(this));
-		handler.register(new ReloadSubCommand(this));
+		Lamp<BukkitCommandActor> lamp = BukkitLamp.builder(this).build();
+		lamp.register(new MainCommand(this));
+		lamp.register(new HelpSubCommand(this));
+		lamp.register(new ReloadSubCommand(this));
 	}
 
 	public FoliaLib getFoliaLib() {

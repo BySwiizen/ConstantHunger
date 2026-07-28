@@ -2,9 +2,9 @@ package me.datatags.constanthunger.command;
 
 import me.datatags.constanthunger.ConstantHunger;
 import me.datatags.constanthunger.command.subcommands.HelpSubCommand;
+import org.bukkit.command.CommandSender;
 import revxrsal.commands.annotation.Command;
-import revxrsal.commands.annotation.DefaultFor;
-import revxrsal.commands.bukkit.BukkitCommandActor;
+import revxrsal.commands.annotation.CommandPlaceholder;
 
 
 @Command("constanthunger")
@@ -18,8 +18,8 @@ public class MainCommand {
     }
 
 
-    @DefaultFor("constanthunger")
-    public void help(BukkitCommandActor sender) {
+	@CommandPlaceholder
+    public void help(CommandSender sender) {
         helpcommand.help(sender);
     }
 }
